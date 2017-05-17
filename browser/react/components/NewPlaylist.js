@@ -1,15 +1,15 @@
 import React from 'react';
 
-const NewPlaylist = function (){
-  return (
+const NewPlaylist = function (props){
+    return (
     <div className="well">
-  <form className="form-horizontal">
+  <form onSubmit={props.handleSubmit} className="form-horizontal">
     <fieldset>
       <legend>New Playlist</legend>
       <div className="form-group">
         <label className="col-xs-2 control-label">Name</label>
         <div className="col-xs-10">
-          <input className="form-control" type="text"/>
+          <input onChange={props.handleChange} className="form-control" type="text"/>
         </div>
       </div>
       <div className="form-group">
@@ -23,3 +23,4 @@ const NewPlaylist = function (){
   )
 }
 
+export default NewPlaylist;
