@@ -27,6 +27,7 @@ export default class AppContainer extends Component {
     this.selectArtist = this.selectArtist.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
     this.selectPlaylist = this.selectPlaylist.bind(this);
+    this.getAllSongs = this.getAllSongs.bind(this);
   }
 
   componentDidMount () {
@@ -152,6 +153,13 @@ addPlaylist (playlistName){
   });
 }
 
+getAllSongs(){
+  axios.get('/api/songs')
+  .then(res=>res.data)
+  .then(songs=>{
+    this.setState({ allSongs:songs});
+  })
+}
 
   render () {
 
@@ -161,7 +169,8 @@ addPlaylist (playlistName){
       selectAlbum: this.selectAlbum,
       selectArtist: this.selectArtist,
       addPlaylist : this.addPlaylist,
-      selectPlaylist: this.selectPlaylist
+      selectPlaylist: this.selectPlaylist,
+      getAllSongs: this.getAllSongs
     });
 
     return (
