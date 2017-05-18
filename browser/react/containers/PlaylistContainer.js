@@ -1,6 +1,7 @@
 import React from 'react';
 import NewPlaylist from '../components/NewPlaylist';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 export default class PlaylistContainer extends React.Component{
   constructor(props){
@@ -23,10 +24,9 @@ export default class PlaylistContainer extends React.Component{
     else this.setState({disabled : true, inputValue : value});
   }
   handleSubmit(evt){
-   const addPlaylist = this.props.addPlaylist;
-   addPlaylist(this.state.inputValue);
-   this.setState({inputValue: ""});
    evt.preventDefault();
+   const addPlaylist = this.props.addPlaylist;
+   addPlaylist(this.state.inputValue)
   }
   render(){
     const inputValue = this.state.inputValue;

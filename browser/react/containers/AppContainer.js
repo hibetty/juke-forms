@@ -4,6 +4,8 @@ import axios from 'axios';
 import initialState from '../initialState';
 import AUDIO from '../audio';
 
+import {browserHistory} from 'react-router'
+
 import Albums from '../components/Albums.js';
 import Album from '../components/Album';
 import Sidebar from '../components/Sidebar';
@@ -144,7 +146,9 @@ addPlaylist (playlistName){
   .then(playlist => {
     this.setState({
       allPlaylists: [...this.state.allPlaylists, playlist]
-    });
+    })
+     let path = `/playlists/${playlist.id}`
+      browserHistory.push(path);
   });
 }
 
